@@ -28,7 +28,7 @@ model = genai.GenerativeModel(
 chat_session = model.start_chat(history=[])
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "jaa miya jao chilgoze kahi ke"
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
 
 chat_history = []
