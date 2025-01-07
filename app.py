@@ -64,7 +64,7 @@ def search(prompt):
         # Check if any keyword matches the user input
         if any(keyword in normalized_prompt for keyword in keywords):
             # Return a fixed response for creator-related questions
-            return "I was created by Mohammed Adum by integrating Gemini."
+            return "Adum created me by integrating Gemini."
         else:
             # Use the chatbot to generate a dynamic response for other questions
             response = chat_session.send_message(prompt).text.strip()
