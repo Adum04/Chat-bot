@@ -36,93 +36,43 @@ chat_history = []
 
 def search(prompt):
     try:
-        if any(
-            keyword in prompt.lower()
-            for keyword in [
-                "who created you",
-                "who built you",
-                "who made you",
-                "your creator",
-                "Who made it?",
-                "Who is the creator?",
-                "Who developed it?",
-                "Who built it?",
-                "Who designed it?",
-                "Who came up with it?",
-                "Who is behind it?",
-                "Who is responsible for creating it?",
-                "Who authored it?",
-                "Who invented it?",
-                "Who was the mastermind behind it?",
-                "Who brought it to life?",
-                "Who originated it?",
-                "Who engineered it?",
-                "Who crafted it?",
-                "Who put it together?",
-                "Who thought of it?",
-                "Who initiated it?",
-                "Whose idea was it?",
-                "Who worked on it?",
-                "Whose idea was it?",
-                "Who worked on it?",
-                "Who made it?",
-                "Who is the creator?",
-                "Who developed it?",
-                "Who built it?",
-                "Who designed it?",
-                "Who came up with it?",
-                "Who is behind it?",
-                "Who is responsible for creating it?",
-                "Who authored it?",
-                "Who invented it?",
-                "Who was the mastermind behind it?",
-                "Who brought it to life?",
-                "Who originated it?",
-                "Who engineered it?",
-                "Who crafted it?",
-                "Who put it together?",
-                "Who thought of it?",
-                "Who initiated it?",
-                "Who produced it?",
-                "Who brought it into existence?",
-                "Who invented this?",
-                "Who founded it?",
-                "Who is the originator?",
-                "Who is the architect of it?",
-                "Who is the brains behind it?",
-                "Who is its maker?",
-                "Who brought it to reality?",
-                "Who put it into motion?",
-                "Who dreamed it up?",
-                "Who devised it?",
-                "Who programmed it?",
-                "Who initiated its development?",
-                "Who was its primary developer?",
-                "Who led its creation?",
-                "Who conceptualized it?",
-                "Who visualized it?",
-                "Who executed it?",
-                "Who turned the idea into reality?",
-                "Who launched it?",
-                "Who engineered this concept?",
-                "Who is credited for this?",
-                "Who was involved in its creation?",
-                "Who designed and developed it?",
-                "Whose brainchild is it?",
-                "Who is the force behind it?",
-                "Who orchestrated its development?",
-                "Who pioneered it?",
-                "Who put it into existence?",
-            ]
-        ):
-            # If the question is about the chatbot's creator
+        # Normalize user input for consistent comparison
+        normalized_prompt = prompt.lower().strip()
+
+        # Define a concise list of keywords and phrases
+        keywords = [
+            "who created you",
+            "who built you",
+            "who made you",
+            "your creator",
+            "who is the creator",
+            "who developed it",
+            "who designed it",
+            "who engineered it",
+            "who programmed it",
+            "who is responsible",
+            "who brought it to life",
+            "whose idea was it",
+            "who came up with it",
+            "who is behind it",
+            "who is Adum",
+            "who is adum",
+            "adum",
+            "Adum",
+        ]
+
+        # Check if any keyword matches the user input
+        if any(keyword in normalized_prompt for keyword in keywords):
+            # Return a fixed response for creator-related questions
             return "I was created by Mohammed Adum by integrating Gemini."
         else:
-            # Generic prompt for other questions
+            # Use the chatbot to generate a dynamic response for other questions
             response = chat_session.send_message(prompt).text.strip()
 
-            # Post-process response to ensure accuracy
-            response = response.replace("Google", "Google")  # No changes unless needed
+            # Post-process response (optional)
+            response = response.replace(
+                "Google", "Google"
+            )  # No changes unless required
             formatted_response = response.replace("\n", "<br>")
             return formatted_response
     except Exception as e:
@@ -146,4 +96,4 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
