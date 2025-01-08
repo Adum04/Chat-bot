@@ -42,6 +42,7 @@ def search(prompt):
         # Define a concise list of keywords and phrases
         keywords = [
             "who created you",
+            "who created u",
             "who built you",
             "who made you",
             "your creator",
