@@ -42,10 +42,12 @@ def search(prompt):
         # Define a concise list of keywords and phrases
         keywords = [
             "who created you",
+            "who created u",
             "who built you",
             "who made you",
             "your creator",
             "who is the creator",
+            "who is your creator",
             "who developed it",
             "who designed it",
             "who engineered it",
@@ -64,7 +66,7 @@ def search(prompt):
         # Check if any keyword matches the user input
         if any(keyword in normalized_prompt for keyword in keywords):
             # Return a fixed response for creator-related questions
-            return "Adum created me by integrating Gemini."
+            return "Adum is software developer who created me."
         else:
             # Use the chatbot to generate a dynamic response for other questions
             response = chat_session.send_message(prompt).text.strip()
